@@ -8,9 +8,10 @@ using MvcMovie.Data;
 namespace MvcMovie.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20161122092209_alterid")]
+    partial class alterid
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.0.1")
@@ -174,8 +175,7 @@ namespace MvcMovie.Migrations
 
             modelBuilder.Entity("MvcMovie.Models.Movie", b =>
                 {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd();
+                    b.Property<string>("ID");
 
                     b.Property<string>("Genre")
                         .IsRequired()
@@ -190,8 +190,6 @@ namespace MvcMovie.Migrations
 
                     b.Property<string>("Title")
                         .HasAnnotation("MaxLength", 60);
-
-                    b.Property<string>("key");
 
                     b.HasKey("ID");
 

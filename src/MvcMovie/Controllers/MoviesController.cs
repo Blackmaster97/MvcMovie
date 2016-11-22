@@ -63,7 +63,7 @@ namespace MvcMovie.Controllers
 
 
         // GET: Movies/Details/5
-        public async Task<IActionResult> Details(string id)
+        public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
             {
@@ -101,7 +101,7 @@ namespace MvcMovie.Controllers
         }
 
         // GET: Movies/Edit/5
-        public async Task<IActionResult> Edit(string id)
+        public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
             {
@@ -121,7 +121,7 @@ namespace MvcMovie.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> EditResult(string id, [Bind("ID,Genre,Price,ReleaseDate,Title")] Movie movie)
+        public async Task<IActionResult> EditResult(int id, [Bind("ID,Genre,Price,ReleaseDate,Title")] Movie movie)
         {
             if (id != movie.ID)
             {
@@ -152,9 +152,9 @@ namespace MvcMovie.Controllers
         }
 
         // GET: Movies/Delete/5
-        public async Task<IActionResult> Delete(string id)
+        public async Task<IActionResult> Delete(int? id)
         {
-            if (id == null)
+           if (id == null)
             {
                 return NotFound();
             }
@@ -171,7 +171,7 @@ namespace MvcMovie.Controllers
         // POST: Movies/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(string id)
+        public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var movie = await _context.Movie.SingleOrDefaultAsync(m => m.ID == id);
             _context.Movie.Remove(movie);
@@ -179,7 +179,7 @@ namespace MvcMovie.Controllers
             return RedirectToAction("Index");
         }
 
-        private bool MovieExists(string id)
+        private bool MovieExists(int id)
         {
             return _context.Movie.Any(e => e.ID == id);
         }

@@ -6,7 +6,9 @@ namespace MvcMovie.Models
     public class Movie
     {
         //gets e sets são incluidos dentro do atributo 
-        public string ID { get; set; }
+        public int ID { get; set; }
+
+        public string key { get; set; }
 
         [StringLength(60, MinimumLength = 3)]//pode conter 60 caracteres e no minimo 3
         public string Title { get; set; }
